@@ -71,9 +71,9 @@ const byte ROWS = 3 ;
 const byte COLS = 2 ;
 
 char hexaKeys[ROWS][COLS] = {
-  {'1','2'},
-  {'3','4'},
-  {'5','6'}
+  {'A','B'},
+  {'C','D'},
+  {'E','F'}
 };
 
 byte rowPins[ROWS] = { 17 , 18 , 5 };
@@ -91,7 +91,7 @@ void setup() {
 
 
 
-  esp_sleep_enable_ext0_wakeup(GPIO_NUM_12,HIGH);//Active le réveille externe par le bouton power
+  //esp_sleep_enable_ext0_wakeup(GPIO_NUM_12,HIGH);//Active le réveille externe par le bouton power
 
 
   Backlight.begin();
@@ -141,7 +141,7 @@ void loop() {
     TelnetStream.println(customKey);
   }
 
-  if(PowerButtonState=HIGH){
+  /*if(PowerButtonState=HIGH){
     delay(2000);//Appuie long pour éteindre
     if(PowerButtonState=HIGH){
       Serial.println("Mode deep sleep");
@@ -151,7 +151,7 @@ void loop() {
     }
 
 
-  }
+  }*/
 
 /*
 if(PowerButtonState == HIGH){
