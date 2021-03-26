@@ -27,11 +27,11 @@
 #define IndicateurCount 3
 
 int brightness = 255 ;  
-int brightnessIndicateur = 25;
+int brightnessIndicateur = 255;
 
 
-Adafruit_NeoPixel Backlight(BacklightCount , BacklightPin , NEO_RGBW + NEO_KHZ400); //initialisation lumière arrière
-Adafruit_NeoPixel Frontlight(FrontlightCount , FrontlightPin , NEO_RGBW + NEO_KHZ800); //initialisation lumière arrière
+Adafruit_NeoPixel Backlight(BacklightCount , BacklightPin , NEO_GRBW + NEO_KHZ400); //initialisation lumière arrière
+Adafruit_NeoPixel Frontlight(FrontlightCount , FrontlightPin , NEO_GRBW + NEO_KHZ400); //initialisation lumière arrière
 Adafruit_NeoPixel Indicateur(IndicateurCount , IndicateurPin , NEO_BRG + NEO_KHZ800);
 
 /*-----------------------------------------*/
@@ -71,9 +71,9 @@ const byte ROWS = 3 ;
 const byte COLS = 2 ;
 
 char hexaKeys[ROWS][COLS] = {
-  {'A','B'},
-  {'C','D'},
-  {'E','F'}
+  {'1','2'},
+  {'3','4'},
+  {'5','6'}
 };
 
 byte rowPins[ROWS] = { 17 , 18 , 5 };
@@ -100,9 +100,12 @@ void setup() {
   Backlight.setBrightness(brightness);
   Frontlight.setBrightness(brightness);
   Indicateur.setBrightness(brightnessIndicateur);
+  Backlight.fill(white,0,30);
+  Frontlight.fill(white,0,30);
   Backlight.show();
   Frontlight.show();
   Indicateur.show();
+  delay(2000);
 
 
   pinMode(PowerIndicateurLed,OUTPUT);
@@ -259,48 +262,58 @@ if(PowerButtonState == HIGH){
 
 
 
-  Frontlight.show();
+  /*Frontlight.show();
   Frontlight.fill(white,1,30);
   Frontlight.show();
+  delay(1000);
+  Frontlight.clear();
+  Frontlight.show();*/
   Indicateur.fill(white,0,3);
   Indicateur.show();
+  Frontlight.clear();
+  Frontlight.show();
+  while(i<30){
+    i++;
+    Frontlight.setPixelColor(i,255,150,0);
+    Frontlight.show();
+    delay(50);
+  }
+  Frontlight.clear();
+  Frontlight.show();
+  i=0;
+
+
 
 /*
-  if(keypad=1){
+  if(customKeypad=1){
 
   }
 
 
-  if(keypad=2){
+  if(customKeypad=2){
 
   }
 
 
-  if(keypad=3){
+  if(customKeypad=3){
 
   }
 
 
-  if(keypad=4){
-
-  }
-
-
-
-  if(keypad=5){
+  if(customKeypad=4){
 
   }
 
 
 
-  if(keypad=6){
+  if(customKeypad=5){
 
   }
 
+
+
+  if(customKeypad=6){
+
+  }
 */
-
-
-
-
-
 }
