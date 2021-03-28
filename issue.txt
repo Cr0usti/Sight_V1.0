@@ -1,0 +1,10 @@
+problème de température avec les 3 capteurs
+1ere solution : calibrer le capteurs
+
+Deep sleep
+lorsque la carte s'allume elle passe directement en mode deep sleep et en appuyant sur le bouton cense la réveiller elle ne se réveille pas
+
+Keypad
+les bouton marche une fois sur deux en
+
+
